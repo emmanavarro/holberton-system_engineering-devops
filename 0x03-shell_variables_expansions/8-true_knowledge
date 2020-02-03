@@ -1,2 +1,2 @@
 #!/bin/bash
-echo $(((HOLBERTON=1209)+128))
+echo $(($TRUEKNOWLEDGE+128))
