@@ -4,7 +4,6 @@ sudo apt-get -y update
 sudo apt-get -y install nginx
 # Adjust the Firewall port 80
 sudo ufw allow 'Nginx HTTP'
-# Index file
-echo "Holberton School" > /var/www/html/index.html
-# Start Nginx
+# Index file & Start Nginx
+echo "Holberton School" > /var/www/html/index.nginx-debian.html
 sudo service nginx start
