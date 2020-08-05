@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Installs nginx web server on ubuntu 16.04
+sudo apt-get -y update
+sudo apt-get -y install nginx
+# Adjust the Firewall port 80
+sudo ufw allow 'Nginx HTTP'
+# Index file & Start Nginx
+echo "Holberton School" > /var/www/html/index.nginx-debian.html
+# Redirection
+sudo sed -i '/listen 80 default_server/a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
+# Start the server
+sudo service nginx restart
