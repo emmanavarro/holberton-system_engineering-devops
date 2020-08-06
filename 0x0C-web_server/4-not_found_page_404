@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Installs nginx web server on ubuntu 16.04
+sudo apt-get -y update
+sudo apt-get -y install nginx
+# Adjusts the Firewall port 80
+sudo ufw allow 'Nginx HTTP'
+# Modifies index file
+echo "Holberton School" > /var/www/html/index.nginx-debian.html
+# Redirects to "301 Moved permanently"
+sudo sed -i '/listen 80 default_server/a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
+# Modifies 404 html
+sudo echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/custom_404.html
+# Configures 404 error page
+sudo sed -i '/listen 80 default_server/a error_page 404 /custom_404.html;' /etc/nginx/sites-available/default
+# Restarts the server
+sudo service nginx restart
