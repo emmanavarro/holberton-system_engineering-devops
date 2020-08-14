@@ -4,7 +4,7 @@
 sudo apt-get -y update
 sudo apt-get -y install haproxy
 # Enable haproxy to start at boot
-sudo echo "ENABLED=1" | sudo tee /etc/default/haproxy
+sudo echo "ENABLED=1" >> /etc/default/haproxy
 # Set up the HAproxy
 sudo echo "
 frontend web-frontend
@@ -15,6 +15,6 @@ backend web-backend
 	balance roundrobin
 	server 1456-web-01 34.74.148.216:80 check
 	server 1456-web-02 52.91.39.101:80 check
-" | sudo tee /etc/haproxy/haproxy.cfg
+" >> /etc/haproxy/haproxy.cfg
 # Restart the haproxy
 sudo service haproxy restart
