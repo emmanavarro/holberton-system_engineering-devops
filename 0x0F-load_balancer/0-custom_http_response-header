@@ -1,4 +1,4 @@
-i!/usr/bin/env bash
+#!/usr/bin/env bash
 # Installs nginx web server on ubuntu 16.04
 sudo apt-get -y update
 sudo apt-get -y install nginx
