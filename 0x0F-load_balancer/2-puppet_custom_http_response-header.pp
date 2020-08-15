@@ -1,14 +1,15 @@
 # Creating a custom HTTP header response for the HAproxy
 exec {'update':
-  command => '/usr/bin/sudo apt-get update',
+  command  => 'sudo apt-get update',
+  provider => shell,
 }
 
-package {'nginx web server':
+package {'nginx':
   ensure  => installed,
   require => Exec['update'],
 }
 
-file_line {'header response':
+file_line {'header_response':
   ensure  => present,
   path    => '/etc/nginx/sites-available/default',
   after   => 'listen 80 default_server;',
@@ -18,5 +19,5 @@ file_line {'header response':
 
 service { 'nginx':
   ensure  => running,
-  require => File_line['header response'],
+  require => File_line['header_response'],
 }
