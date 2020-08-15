@@ -1,6 +1,6 @@
 # Creating a custom HTTP header response for the HAproxy
 exec {'update':
-  command => '/usr/bin/apt-get update',
+  command => '/usr/bin/sudo apt-get update',
 }
 
 package {'nginx web server':
@@ -17,7 +17,6 @@ file_line {'header response':
 }
 
 service { 'nginx':
-  ensure     => running,
-  require    => Package['nginx'],
-  hasrestart => true
+  ensure  => running,
+  require => File_line['header response'],
 }
