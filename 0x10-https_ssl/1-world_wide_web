@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 # Display the subdomain info
+# shellcheck disable=SC2086
 
 domain_cfg(){
-	result=$(dig $2."$1" | grep -A1 'ANSWER SECTION:' | tr '\t' '\n' | tail -2 | tr '\n' ' ')
-	echo "$2 $result" | awk '{ print "The subdomain "$1" is a "$2" record and points to " $3 }'
+	result=$(dig "$2.$1" | grep -A1 'ANSWER SECTION:' | tr '\t' '\n' | tail -2 | tr '\n' ' ')
+	echo "$2 $result" | awk '{print "The subdomain " $1 " is a " $2 " record and points to " $3}'
 }
 if [ "$#" -eq 1 ]; then
 	domain_cfg "$1" "www"
