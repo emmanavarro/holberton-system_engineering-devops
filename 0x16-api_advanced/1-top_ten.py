@@ -10,7 +10,7 @@ def top_ten(subreddit):
     url_sred = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
     url_sred += "?limit=10"
     headers = {'user-agent': 'request'}
-    response = requests.get(url_sred_inf, headers=headers,
+    response = requests.get(url_sred, headers=headers,
                             allow_redirects=False)
     if str(response) != "<Response [200]>":
         print(None)
