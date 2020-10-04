@@ -4,7 +4,7 @@
 
 ## Author: Emma Navarro 
 
-## Status: Corrected
+## Status: Closed
 
 ## Summary of issues established during the emergency
 
